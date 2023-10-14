@@ -11,6 +11,7 @@ const dates = allDays.map(date => format(date, 'MMM d'));
 function App() {
   const [tabIndex, setTabIndex] = useState(0);
   const [selectedTabIndex, setSelectedTabIndex] = useState(0);
+  const [allToggled, setAllToggled] = useState(false);
 
   const handleLeftScroll = () => {
     if(tabIndex > 0) setTabIndex(tabIndex - 1);
@@ -18,6 +19,10 @@ function App() {
 
   const handleRightScroll = () => {
     if(tabIndex < dates.length) setTabIndex(tabIndex + 1)
+  }
+
+  const handleAllClick = () => {
+    setAllToggled(!allToggled);
   }
 
   return (
@@ -48,7 +53,7 @@ function App() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
             </svg>
           </button>
-          <button className="px-1 text-sm">All</button>
+          <button className={`px-2 text-sm ${allToggled ? 'border-2 border-purple-500' : 'border-2 border-white'}`} onClick={handleAllClick}>All</button>
         </div>
         <div className="flex overflow-hidden">
           {dates.slice(tabIndex, dates.length).map((date, index) => (
