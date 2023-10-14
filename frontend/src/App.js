@@ -20,6 +20,19 @@ function App() {
       </div>
       {/* Title */}
       <div className="text-xl p-2">Agenda</div>
+      {/* Tabs */}
+      <div className="flex justify-between border-b-2">
+        <div className="flex">
+          <button className="px-1">left</button>
+          <button className="px-1">All</button>
+        </div>
+        <div className="flex"> {/* TODO: implement dates & scrolling */} 
+          <p>Nov 1st</p>
+          <p>Nov 2nd</p>
+          <p>Nov 3rd</p>
+        </div>
+        <button className="px-1">right</button>
+      </div>
     </div>
   );
 }
