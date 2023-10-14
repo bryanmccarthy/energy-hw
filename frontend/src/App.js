@@ -78,17 +78,19 @@ function App() {
       {/* Events */}
       <div className="flex-grow overflow-y-auto">
         {events.map((event, index) => (
-          <div key={index} className="p-2">
-            <p className="text-xs border-b-2 font-light">{event.starttime}</p>
-            <p className="text-sm font-medium">{event.title}</p>
-            <p className="text-xs font-light">{event.starttime} - {event.endtime}</p>
-            <p className="text-xs font-light">{event.location}</p>
-            <div className="flex flex-wrap border-b-2">
-              {event.tags.map((tag, index) => (
-                <div key={index} className="bg-gray-200 m-0.5 px-0.5 rounded-sm text-xs font-light">{tag}</div>
-              ))}
+          allToggled || event.date === dates[selectedTabIndex] ?
+            <div key={index} className="p-2">
+              <p className="text-xs border-b-2 font-light">{event.starttime}</p>
+              <p className="text-sm font-medium">{event.title}</p>
+              <p className="text-xs font-light">{event.starttime} - {event.endtime}</p>
+              <p className="text-xs font-light">{event.location}</p>
+              <div className="flex flex-wrap border-b-2">
+                {event.tags.map((tag, index) => (
+                  <div key={index} className="bg-gray-200 m-0.5 px-0.5 rounded-sm text-xs font-light">{tag}</div>
+                ))}
+              </div>
             </div>
-          </div>
+          : null
         ))}
       </div>
     </div>

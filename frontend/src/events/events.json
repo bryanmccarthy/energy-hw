@@ -1,7 +1,7 @@
 [
   {
     "title": "This is an event haha",
-    "date": "2023-01-01",
+    "date": "Jan 1",
     "starttime": "09:30 GBT+1",
     "endtime": "10:30 GBT+1",
     "location": "Somewhere in a room",
@@ -9,7 +9,7 @@
   },
   {
     "title": "Lunch",
-    "date": "2023-01-01",
+    "date": "Jan 1",
     "starttime": "12:30 GBT+1",
     "endtime": "13:30 GBT+1",
     "location": "Fine restaurant",
@@ -17,7 +17,7 @@
   },
   {
     "title": "Dinner",
-    "date": "2023-01-01",
+    "date": "Jan 1",
     "starttime": "18:30 GBT+1",
     "endtime": "19:30 GBT+1",
     "location": "Fine restaurant",
@@ -25,7 +25,7 @@
   },
   {
     "title": "This is an event haha",
-    "date": "2023-01-02",
+    "date": "Jan 2",
     "starttime": "09:30 GBT+1",
     "endtime": "10:30 GBT+1",
     "location": "Somewhere in a room",
@@ -33,7 +33,7 @@
   },
   {
     "title": "Lunch",
-    "date": "2023-01-02",
+    "date": "Jan 2",
     "starttime": "12:30 GBT+1",
     "endtime": "13:30 GBT+1",
     "location": "Fine restaurant",
@@ -41,7 +41,7 @@
   },
   {
     "title": "Dinner",
-    "date": "2023-01-02",
+    "date": "Jan 2",
     "starttime": "18:30 GBT+1",
     "endtime": "19:30 GBT+1",
     "location": "Fine restaurant",
