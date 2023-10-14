@@ -1,8 +1,14 @@
 
 function App() {
   return (
-    <div className="text-3xl font-bold underline">
-      Energy HW frontend
+    <div className="border-2 h-screen">
+      {/* Header */}
+      <div className="flex justify-between bg-zinc-100 p-2">
+        <div>menu</div>
+        <div>
+          mail & profile
+        </div>
+      </div>
     </div>
   );
 }
