@@ -23,7 +23,11 @@ function App() {
       {/* Tabs */}
       <div className="flex justify-between border-b-2">
         <div className="flex">
-          <button className="px-1">left</button>
+          <button className="px-1">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+            </svg>
+          </button>
           <button className="px-1">All</button>
         </div>
         <div className="flex"> {/* TODO: implement dates & scrolling */} 
@@ -31,7 +35,11 @@ function App() {
           <p>Nov 2nd</p>
           <p>Nov 3rd</p>
         </div>
-        <button className="px-1">right</button>
+        <button className="px-1">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+          </svg>
+        </button>
       </div>
     </div>
   );
