@@ -1,3 +1,11 @@
+import { eachDayOfInterval, startOfYear, endOfYear, format } from 'date-fns';
+
+const startDate = startOfYear(new Date());
+const endDate = endOfYear(new Date());
+const allDays = eachDayOfInterval({ start: startDate, end: endDate });
+
+const dates = allDays.map(date => format(date, 'MMM d'));
+
 const events = [
   {
     title: "This is an event haha",
@@ -46,12 +54,12 @@ function App() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
             </svg>
           </button>
-          <button className="px-1">All</button>
+          <button className="px-1 text-sm">All</button>
         </div>
-        <div className="flex"> {/* TODO: implement dates & scrolling */} 
-          <p>Nov 1st</p>
-          <p>Nov 2nd</p>
-          <p>Nov 3rd</p>
+        <div className="flex overflow-hidden">
+          {dates.map((date, index) => (
+            <p key={index} className="px-2 text-sm">{date}</p>
+          ))}
         </div>
         <button className="px-1">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
