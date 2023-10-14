@@ -87,7 +87,13 @@ function App() {
               <p className="text-xs border-b-2 font-light">{event.starttime}</p>
               <p className="text-sm font-medium">{event.title}</p>
               <p className="text-xs font-light">{event.starttime} - {event.endtime}</p>
-              <p className="text-xs font-light">{event.location}</p>
+              <div className="flex">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                </svg>
+                <p className="text-xs font-light">{event.location}</p>
+              </div>
               <div className="flex flex-wrap border-b-2">
                 {event.tags.map((tag, index) => (
                   <div key={index} className="bg-gray-200 m-0.5 px-0.5 rounded-sm text-xs font-light">{tag}</div>
