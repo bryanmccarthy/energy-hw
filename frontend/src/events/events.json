@@ -1,0 +1,50 @@
+[
+  {
+    "title": "This is an event haha",
+    "date": "2023-01-01",
+    "starttime": "09:30 GBT+1",
+    "endtime": "10:30 GBT+1",
+    "location": "Somewhere in a room",
+    "tags": ["THIS IS A TAG", "THIS IS ANOTHER TAG", "SO MANY TAGS"]
+  },
+  {
+    "title": "Lunch",
+    "date": "2023-01-01",
+    "starttime": "12:30 GBT+1",
+    "endtime": "13:30 GBT+1",
+    "location": "Fine restaurant",
+    "tags": ["THIS IS A TAG", "THIS IS ANOTHER TAG", "SO MANY TAGS"]
+  },
+  {
+    "title": "Dinner",
+    "date": "2023-01-01",
+    "starttime": "18:30 GBT+1",
+    "endtime": "19:30 GBT+1",
+    "location": "Fine restaurant",
+    "tags": ["THIS IS A TAG", "THIS IS ANOTHER TAG", "SO MANY TAGS"]
+  },
+  {
+    "title": "This is an event haha",
+    "date": "2023-01-02",
+    "starttime": "09:30 GBT+1",
+    "endtime": "10:30 GBT+1",
+    "location": "Somewhere in a room",
+    "tags": ["THIS IS A TAG", "THIS IS ANOTHER TAG", "SO MANY TAGS"]
+  },
+  {
+    "title": "Lunch",
+    "date": "2023-01-02",
+    "starttime": "12:30 GBT+1",
+    "endtime": "13:30 GBT+1",
+    "location": "Fine restaurant",
+    "tags": ["THIS IS A TAG", "THIS IS ANOTHER TAG", "SO MANY TAGS"]
+  },
+  {
+    "title": "Dinner",
+    "date": "2023-01-02",
+    "starttime": "18:30 GBT+1",
+    "endtime": "19:30 GBT+1",
+    "location": "Fine restaurant",
+    "tags": ["THIS IS A TAG", "THIS IS ANOTHER TAG", "SO MANY TAGS"]
+  }
+]

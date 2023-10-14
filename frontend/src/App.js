@@ -1,4 +1,5 @@
 import { eachDayOfInterval, startOfYear, endOfYear, format } from 'date-fns';
+import events from './events/events.json';
 import { useState } from 'react';
 
 const startDate = startOfYear(new Date());
@@ -6,25 +7,6 @@ const endDate = endOfYear(new Date());
 const allDays = eachDayOfInterval({ start: startDate, end: endDate });
 
 const dates = allDays.map(date => format(date, 'MMM d'));
-
-const events = [
-  {
-    title: "This is an event haha",
-    date: "Nov 1st",
-    starttime: "09:30 GBT+1",
-    time: "09:30 GBT+1 - 10:30 GBT+1",
-    location: "Somewhere in a room",
-    tags: ["THIS IS A TAG", "THIS IS ANOTHER TAG", "SO MANY TAGS"],
-  },
-  {
-    title: "Lunch",
-    date: "Nov 1st",
-    starttime: "12:30 GBT+1",
-    time: "12:30 GBT+1 - 13:30 GBT+1",
-    location: "Fine restaurant",
-    tags: ["THIS IS A TAG", "THIS IS ANOTHER TAG", "SO MANY TAGS"],
-  },
-];
 
 function App() {
   const [tabIndex, setTabIndex] = useState(0);
@@ -91,7 +73,7 @@ function App() {
           <div key={index} className="p-2">
             <p className="text-xs border-b-2 font-light">{event.starttime}</p>
             <p className="text-sm font-medium">{event.title}</p>
-            <p className="text-xs font-light">{event.time}</p>
+            <p className="text-xs font-light">{event.starttime} - {event.endtime}</p>
             <p className="text-xs font-light">{event.location}</p>
             <div className="flex flex-wrap border-b-2">
               {event.tags.map((tag, index) => (
