@@ -52,7 +52,9 @@ function App() {
         </div>
         <div className="flex overflow-hidden">
           {dates.slice(tabIndex, dates.length).map((date, index) => (
-            <p key={index} className={`px-2 text-sm cursor-pointer ${selectedTabIndex === index ? 'text-blue-600 border-b-2 border-blue-600' : ''}`}>{date}</p>
+            <p key={index} className={`px-2 text-sm cursor-pointer ${selectedTabIndex === index ? 'text-blue-600 border-b-2 border-blue-600' : ''}`} onClick={() => setSelectedTabIndex(index)}>
+              {date}
+            </p>
           ))}
         </div>
         <button className="px-1" onClick={handleRightScroll}>
