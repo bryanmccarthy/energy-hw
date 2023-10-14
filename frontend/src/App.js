@@ -10,6 +10,7 @@ const dates = allDays.map(date => format(date, 'MMM d'));
 
 function App() {
   const [tabIndex, setTabIndex] = useState(0);
+  const [selectedTabIndex, setSelectedTabIndex] = useState(0);
 
   const handleLeftScroll = () => {
     if(tabIndex > 0) setTabIndex(tabIndex - 1);
@@ -51,7 +52,7 @@ function App() {
         </div>
         <div className="flex overflow-hidden">
           {dates.slice(tabIndex, dates.length).map((date, index) => (
-            <p key={index} className="px-2 text-sm cursor-pointer">{date}</p>
+            <p key={index} className={`px-2 text-sm cursor-pointer ${selectedTabIndex === index ? 'text-blue-600 border-b-2 border-blue-600' : ''}`}>{date}</p>
           ))}
         </div>
         <button className="px-1" onClick={handleRightScroll}>
