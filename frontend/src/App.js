@@ -1,3 +1,21 @@
+const events = [
+  {
+    title: "This is an event haha",
+    date: "Nov 1st",
+    starttime: "09:30 GBT+1",
+    time: "09:30 GBT+1 - 10:30 GBT+1",
+    location: "Somewhere in a room",
+    tags: ["THIS IS A TAG", "THIS IS ANOTHER TAG", "SO MANY TAGS"],
+  },
+  {
+    title: "Lunch",
+    date: "Nov 1st",
+    starttime: "12:30 GBT+1",
+    time: "12:30 GBT+1 - 13:30 GBT+1",
+    location: "Fine restaurant",
+    tags: ["THIS IS A TAG", "THIS IS ANOTHER TAG", "SO MANY TAGS"],
+  },
+];
 
 function App() {
   return (
@@ -50,12 +68,19 @@ function App() {
       </div>
       {/* Events */}
       <div className="flex-grow overflow-y-auto border-2">
-        <div className="h-20">
-          This is an event
-        </div>
-        <div className="h-20">
-          This is another event
-        </div>
+        {events.map((event, index) => (
+          <div key={index} className="p-2">
+            <p className="text-xs border-b-2 font-light">{event.starttime}</p>
+            <p className="text-sm font-medium">{event.title}</p>
+            <p className="text-xs font-light">{event.time}</p>
+            <p className="text-xs font-light">{event.location}</p>
+            <div className="flex flex-wrap border-b-2">
+              {event.tags.map((tag, index) => (
+                <div key={index} className="bg-gray-300 m-0.5 px-0.5 rounded-sm text-xs font-light">{tag}</div>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
