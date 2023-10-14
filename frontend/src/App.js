@@ -1,4 +1,5 @@
 import { eachDayOfInterval, startOfYear, endOfYear, format } from 'date-fns';
+import { useState } from 'react';
 
 const startDate = startOfYear(new Date());
 const endDate = endOfYear(new Date());
@@ -26,6 +27,16 @@ const events = [
 ];
 
 function App() {
+  const [tabIndex, setTabIndex] = useState(0);
+
+  const handleLeftScroll = () => {
+    if(tabIndex > 0) setTabIndex(tabIndex - 1);
+  }
+
+  const handleRightScroll = () => {
+    if(tabIndex < dates.length) setTabIndex(tabIndex + 1)
+  }
+
   return (
     <div className="flex flex-col border-2 h-screen">
       {/* Header */}
@@ -49,7 +60,7 @@ function App() {
       {/* Tabs */}
       <div className="flex justify-between border-b-2">
         <div className="flex">
-          <button className="px-1">
+          <button className="px-1" onClick={handleLeftScroll}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
             </svg>
@@ -57,11 +68,11 @@ function App() {
           <button className="px-1 text-sm">All</button>
         </div>
         <div className="flex overflow-hidden">
-          {dates.map((date, index) => (
-            <p key={index} className="px-2 text-sm">{date}</p>
+          {dates.slice(tabIndex, dates.length).map((date, index) => (
+            <p key={index} className="px-2 text-sm cursor-pointer">{date}</p>
           ))}
         </div>
-        <button className="px-1">
+        <button className="px-1" onClick={handleRightScroll}>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
             <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
           </svg>
