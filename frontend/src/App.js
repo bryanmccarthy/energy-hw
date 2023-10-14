@@ -18,6 +18,8 @@ function App() {
           </svg>
         </div>
       </div>
+      {/* Title */}
+      <div className="text-xl p-2">Agenda</div>
     </div>
   );
 }
