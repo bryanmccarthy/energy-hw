@@ -10,7 +10,7 @@ const dates = allDays.map(date => format(date, 'MMM d'));
 
 function App() {
   const [tabIndex, setTabIndex] = useState(0);
-  const [selectedTabIndex, setSelectedTabIndex] = useState(0);
+  const [selectedTabDate, setSelectedTabDate] = useState(dates[0]);
   const [allToggled, setAllToggled] = useState(false);
 
   const handleLeftScroll = () => {
@@ -18,11 +18,15 @@ function App() {
   }
 
   const handleRightScroll = () => {
-    if(tabIndex < dates.length) setTabIndex(tabIndex + 1)
+    if(tabIndex < dates.length) setTabIndex(tabIndex + 1);
   }
 
   const handleAllClick = () => {
     setAllToggled(!allToggled);
+  }
+
+  const handleTabClicked = (date) => {
+    setSelectedTabDate(date);
   }
 
   return (
@@ -57,7 +61,7 @@ function App() {
         </div>
         <div className="flex overflow-hidden">
           {dates.slice(tabIndex, dates.length).map((date, index) => (
-            <p key={index} className={`px-2 text-sm cursor-pointer ${selectedTabIndex === index ? 'text-blue-600 border-b-2 border-blue-600' : ''}`} onClick={() => setSelectedTabIndex(index)}>
+            <p key={index} className={`px-2 text-sm cursor-pointer ${selectedTabDate === date ? 'text-blue-600 border-b-2 border-blue-600' : 'border-b-2 border-white'}`} onClick={() => handleTabClicked(date)}>
               {date}
             </p>
           ))}
@@ -78,7 +82,7 @@ function App() {
       {/* Events */}
       <div className="flex-grow overflow-y-auto">
         {events.map((event, index) => (
-          allToggled || event.date === dates[selectedTabIndex] ?
+          allToggled || event.date === selectedTabDate ?
             <div key={index} className="p-2">
               <p className="text-xs border-b-2 font-light">{event.starttime}</p>
               <p className="text-sm font-medium">{event.title}</p>
