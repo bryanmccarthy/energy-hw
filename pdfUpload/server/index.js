@@ -4,11 +4,7 @@ const upload = require('express-fileupload');
 const app = express();
 app.use(upload());
 
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
-});
-
-app.post('/', (req, res) => {
+app.post('/upload', (req, res) => {
   if(req.files) {
     console.log(req.files);
     const file = req.files.file;
@@ -22,6 +18,6 @@ app.post('/', (req, res) => {
   }
 });
 
-app.listen(3000, () => {
+app.listen(8080, () => {
   console.log('Server started!');
 });
