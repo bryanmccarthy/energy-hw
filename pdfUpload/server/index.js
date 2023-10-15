@@ -1,6 +1,9 @@
 const express = require('express');
 const upload = require('express-fileupload');
 const cors = require('cors');
+const fs = require('fs');
+const path = require('path');
+
 const app = express();
 
 app.use(cors());
@@ -21,7 +24,18 @@ app.post('/upload', (req, res) => {
 });
 
 app.get('/pdfs', (req, res) => {
-  res.send('Hello World!');
+  fs.readdir('./uploads/', (err, files) => {
+    if (err) {
+      return res.status(500).json({ error: 'Unable to read directory' });
+    }
+
+    const fileList = files.filter((file) => {
+      const filePath = path.join('./uploads/', file);
+      return fs.statSync(filePath).isFile();
+    });
+
+    res.json({ files: fileList });
+  });
 });
 
 app.listen(8080, () => {
