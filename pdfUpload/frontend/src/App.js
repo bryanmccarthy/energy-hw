@@ -4,9 +4,13 @@ import { useQuery } from "react-query";
 function App() {
   const [pdfs, setPdfs] = useState([]);
 
-  const { isLoading, error, data } = useQuery("pdfs", () =>
-    fetch("http://localhost:8080/pdfs").then((res) => console.log(res))
-  );
+  const fetchFiles = async () => {
+    const res = await fetch("http://localhost:8080/pdfs");
+    const data = await res.json();
+    setPdfs(data.files);
+  }
+
+  const { isLoading, error, data } = useQuery("pdfs", () => fetchFiles());
 
   return (
     <div className="">
@@ -14,6 +18,13 @@ function App() {
         <input type="file" name="file" />
         <button type="submit">Upload</button>
       </form>
+      {isLoading && <div>Loading...</div>}
+      {error && <div>Error: {error.message}</div>}
+        <div>
+          {pdfs.map(pdf => (
+            <div key={pdf}>{pdf}</div>
+          ))}
+        </div>
     </div>
   );
 }
