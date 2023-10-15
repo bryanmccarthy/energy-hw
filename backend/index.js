@@ -1,14 +1,27 @@
-const Koa = require("koa");
-const parser = require("koa-bodyparser");
-const cors = require("@koa/cors");
-const router = require("./routes/routes");
-const app = new Koa();
-const port = 8000;
+const express = require('express');
+const upload = require('express-fileupload');
 
-app.use(parser())
-  .use(cors())
-  .use(router.routes())
+const app = express();
+app.use(upload());
 
-module.exports = app.listen(port, () => {
-  console.log(`Server listening on port: ${port}`);
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
+});
+
+app.post('/', (req, res) => {
+  if(req.files) {
+    console.log(req.files);
+    const file = req.files.file;
+    const filename = file.name;
+    console.log(filename);
+
+    file.mv('./uploads/' + filename, (err) => {
+      if(err) res.send(err);
+      else res.send('File uploaded!');
+    });
+  }
+});
+
+app.listen(3000, () => {
+  console.log('Server started!');
 });
