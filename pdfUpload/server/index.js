@@ -1,7 +1,9 @@
 const express = require('express');
 const upload = require('express-fileupload');
-
+const cors = require('cors');
 const app = express();
+
+app.use(cors());
 app.use(upload());
 
 app.post('/upload', (req, res) => {
@@ -16,6 +18,10 @@ app.post('/upload', (req, res) => {
       else res.send('File uploaded!');
     });
   }
+});
+
+app.get('/pdfs', (req, res) => {
+  res.send('Hello World!');
 });
 
 app.listen(8080, () => {
