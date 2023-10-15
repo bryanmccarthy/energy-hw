@@ -12,6 +12,10 @@ app.use(upload());
 
 app.post('/upload', (req, res) => {
   if(req.files) {
+    if(req.files.file.mimetype !== 'application/pdf') {
+      return res.status(400).json({ error: 'File must be a PDF' });
+    }
+
     const file = req.files.file;
     const filename = file.name;
     const filepath = path.join('./uploads/', filename);
@@ -58,7 +62,11 @@ app.get('/pdfs', (req, res) => {
   });
 });
 
-
+app.get('/download/:filename', (req, res) => {
+  const filename = req.params.filename;
+  const filepath = path.join('./uploads/', filename);
+  res.download(filepath);
+});
 
 app.listen(8080, () => {
   console.log('Server started!');
