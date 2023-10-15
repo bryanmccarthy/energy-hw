@@ -3,6 +3,7 @@ const upload = require('express-fileupload');
 const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
+const { PDFDocument } = require('pdf-lib');
 
 const app = express();
 
@@ -11,15 +12,34 @@ app.use(upload());
 
 app.post('/upload', (req, res) => {
   if(req.files) {
-    console.log(req.files);
     const file = req.files.file;
     const filename = file.name;
-    console.log(filename);
+    const filepath = path.join('./uploads/', filename);
 
-    file.mv('./uploads/' + filename, (err) => {
-      if(err) res.send(err);
-      else res.send('File uploaded!');
-    });
+    file.mv(filepath, async (err) => {
+      if(err) {
+        res.send(err);
+      } else {
+        const uploadedPdf = await PDFDocument.load(fs.readFileSync(filepath));
+
+        const coverPageDoc = await PDFDocument.create();
+        const coverPage = coverPageDoc.addPage();
+        coverPage.drawText('Cover Page!', {
+          x: 0,
+          y: 0,
+          size: 60,
+        });
+
+        const mergedPdf = await PDFDocument.create();
+        const [coverPageCopy] = await mergedPdf.copyPages(coverPageDoc, [0]);
+        mergedPdf.addPage(coverPageCopy);
+
+        const uploadedPdfCopyPages = await mergedPdf.copyPages(uploadedPdf, uploadedPdf.getPageIndices());
+        uploadedPdfCopyPages.forEach((page) => mergedPdf.addPage(page));
+
+        fs.writeFileSync(filepath, await mergedPdf.save());
+      }
+    })
   }
 });
 
@@ -37,6 +57,8 @@ app.get('/pdfs', (req, res) => {
     res.json({ files: fileList });
   });
 });
+
+
 
 app.listen(8080, () => {
   console.log('Server started!');
