@@ -29,9 +29,9 @@ function App() {
       {error && <div>Error: {error.message}</div>}
 
       <div className="flex flex-wrap p-4">
-        <div className="border-2 h-32 w-28 flex justify-center items-center rounded-lg m-4 bg-gray-200">
+        <div >
           {pdfs.map(pdf => (
-            <div key={pdf}>{pdf}</div>
+            <div key={pdf} className="border-2 h-32 w-28 flex justify-center items-center rounded-lg m-4 bg-gray-200">{pdf}</div>
           ))}
         </div>
       </div>
